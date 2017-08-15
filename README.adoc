@@ -1,4 +1,4 @@
-= Tiko
+http://= Tiko
 Christophe Furmaniak <christophe.furmaniak+tiko-github@gmail.com>
 1.0, August 15 2017, Tiko readme for github
 :toc:
@@ -11,7 +11,12 @@ Tiko is an experiment to create a library and a cli to resolve t.co url in golan
 
 Twitter shortens all urls in tweets using its t.co service. If you need to access the real url, you can use such a resolver.
 
-=== What
+== What
 
 * use it as a cli `tiko resolve https://t.co/SCjrdEBmyx` (_WIP_)
 * or a as a library (_WIP_)
+
+
+== Conventions
+
+* please follow the https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit?pli=1[Angular JS Git Commit Messages Conventions]
