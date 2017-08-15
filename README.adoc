@@ -1,0 +1,17 @@
+= Tiko
+Christophe Furmaniak <christophe.furmaniak+tiko-github@gmail.com>
+1.0, August 15 2017, Tiko readme for github
+:toc:
+:icons: font
+:quick-uri: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
+Tiko is an experiment to create a library and a cli to resolve t.co url in golang
+
+== Why?
+
+Twitter shortens all urls in tweets using its t.co service. If you need to access the real url, you can use such a resolver.
+
+=== What
+
+* use it as a cli `tiko resolve https://t.co/SCjrdEBmyx` (_WIP_)
+* or a as a library (_WIP_)
