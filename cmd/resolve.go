@@ -16,35 +16,34 @@ package cmd
 
 import (
 	"fmt"
-
+	"github.com/looztra/tiko/logger"
+	"github.com/looztra/tiko/tiko"
 	"github.com/spf13/cobra"
 )
 
 // resolveCmd represents the resolve command
 var resolveCmd = &cobra.Command{
 	Use:   "resolve",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "resolve the provided URL",
+	Long: `resolve the provided URL:
+	tiko resolve https://t.co/SCjrdEBmyx`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("resolve called")
+		if len(args) == 0 {
+			cmd.Help()
+		} else if len(args) > 1 {
+			logger.Log.Fatal("Too many arguments for the 'resolve' subcommand")
+		} else {
+			logger.Log.Debug("'resolve' command called with arg <", args[0], ">")
+			resolved, err := tiko.Resolve(args[0])
+			if err != nil {
+				logger.Log.Error("Something went wrong when trying to resolve url <" + args[0] + ">")
+				logger.Log.Fatal(err)
+			}
+			fmt.Printf("url <%s> resolved to <%s>\n", args[0], resolved)
+		}
 	},
 }
 
 func init() {
 	RootCmd.AddCommand(resolveCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// resolveCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// resolveCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

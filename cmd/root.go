@@ -1,4 +1,4 @@
-// Copyright © 2017 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2017 Christophe Furmaniak <christophe.furmaniak+cobra@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/looztra/tiko/logger"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -28,13 +29,12 @@ var cfgFile string
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
 	Use:   "tiko",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A t.co url resolver",
+	Long: `Twitter shortens all urls in tweets using its t.co service.
+	If you need to access the real url, you can use Tiko to get the final (i.e. after all the redirections) URL.`,
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		logger.InitLogger()
+	},
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -49,17 +49,15 @@ func Execute() {
 	}
 }
 
-func init() { 
+func init() {
 	cobra.OnInitialize(initConfig)
 
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.tiko.yaml)")
+	RootCmd.PersistentFlags().StringVarP(&logger.LogLevelAsString, "level", "l", "Info", "log level (Debug, Info, Warn, Error, Fatal, Panic)")
 
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.

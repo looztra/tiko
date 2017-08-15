@@ -1,4 +1,4 @@
-// Copyright © 2017 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2017 Christophe Furmaniak <christophe.furmaniak+cobra@gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,9 @@
 
 package main
 
-import "github.com/looztra/tiko/cmd"
+import (
+	"github.com/looztra/tiko/cmd"
+)
 
 func main() {
 	cmd.Execute()
