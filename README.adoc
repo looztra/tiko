@@ -1,4 +1,4 @@
-http://= Tiko
+= Tiko
 Christophe Furmaniak <christophe.furmaniak+tiko-github@gmail.com>
 1.0, August 15 2017, Tiko readme for github
 :toc:
