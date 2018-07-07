@@ -16,8 +16,9 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/looztra/tiko/logger"
-	"github.com/looztra/tiko/tiko"
+	"github.com/looztra/tiko/pkg"
 	"github.com/spf13/cobra"
 )
 
@@ -29,7 +30,10 @@ var resolveCmd = &cobra.Command{
 	tiko resolve https://t.co/SCjrdEBmyx`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
-			cmd.Help()
+			err := cmd.Help()
+			if err != nil {
+				logger.Log.Fatal("Something went wrong when trying to print the help stuff")
+			}
 		} else if len(args) > 1 {
 			logger.Log.Fatal("Too many arguments for the 'resolve' subcommand")
 		} else {

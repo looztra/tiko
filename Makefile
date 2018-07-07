@@ -6,16 +6,16 @@ GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 BUILD_DIR=build
 BINARY_NAME=tiko
-BINARY_LINUX=$(BINARY_NAME)-linux-${GOARCH}
+BINARY_LINUX=$(BINARY_NAME)-linux-x86_64
 
 BIN_DIR:= $(shell echo $$GOPATH | cut -d ":" -f 1)/bin
 GOMETALINTER := $(BIN_DIR)/gometalinter
 
 .PHONY: test
 
-all: test build-linux
+all: test build
 
-build-linux:
+build:
 				CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BUILD_DIR)/$(BINARY_LINUX) -v
 
 $(GOMETALINTER):
@@ -32,7 +32,7 @@ clean:
 		$(GOCLEAN)
 		rm -rf $(BUILD_DIR)
 
-run: build-linux
+run: build
 		./$(BINARY_UNIX)
 
 deps:

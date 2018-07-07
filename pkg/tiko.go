@@ -1,11 +1,13 @@
 package tiko
 
 import (
+	"net/http"
+
 	"github.com/Sirupsen/logrus"
 	"github.com/looztra/tiko/logger"
-	"net/http"
 )
 
+// Resolve is the core url resolution engine
 func Resolve(url string) (string, error) {
 	logger.Log.Debug("in 'Resolver.Resolve', received " + url)
 

@@ -2,9 +2,13 @@ package logger
 
 import "github.com/Sirupsen/logrus"
 
+// Log is the main log entrypoint
 var Log = logrus.New()
+
+// LogLevelAsString is the string representation of the current log level
 var LogLevelAsString = "Info"
 
+// InitLogger inits the log engine
 func InitLogger() {
 
 	level, err := logrus.ParseLevel(LogLevelAsString)
