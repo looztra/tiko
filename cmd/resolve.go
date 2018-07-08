@@ -1,4 +1,4 @@
-// Copyright © 2017 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2017 Christophe Furmaniak <christophe point furmaniak chez gmail.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// resolveCmd represents the resolve command
+// resolveCmd represents the resolve command.
 var resolveCmd = &cobra.Command{
 	Use:   "resolve",
 	Short: "resolve the provided URL",
